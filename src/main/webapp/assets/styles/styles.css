@@ -1,0 +1,124 @@
+:root {
+    --primary-color: #1073BA;
+    --secondary-color: #00DA55;
+    --gray-color: #3B3B3B;
+    --white-color: #F5F5F5;
+    --black-color: #1F1E1E;
+    --gray-light-color: #E1E1E1;
+
+    --spacing: 5rem;
+
+    --font-primary: 'Roboto', sans-serif;
+    --font-secondary: 'Lato', sans-serif;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; /* 1rem = 10px */
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: var(--font-primary), serif;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    background-color: var(--white-color);
+    color: var(--black-color);
+    margin: 0;
+    padding: 0;
+}
+
+/* Tipografías */
+h1, h2, h3, h4 {
+    font-family: var(--font-secondary), serif;
+    margin: 2rem 0 1rem 0;
+}
+
+h1 {
+    font-size: 4.5rem;
+}
+
+h2 {
+    font-size: 3.2rem;
+    color: var(--primary-color);
+}
+
+h3 {
+    font-size: 2.4rem;
+}
+
+h4 {
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+/* Layout principal */
+main {
+    max-width: 120rem;
+    margin-inline: auto;
+    padding: var(--spacing);
+}
+
+/* Header */
+header {
+    text-align: center;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 3rem 2rem;
+    border-radius: 1rem;
+}
+
+/* Navegación */
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin: 4rem 0;
+}
+
+nav a {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    text-decoration: none;
+    padding: 1rem 2.5rem;
+    border-radius: 0.8rem;
+    font-weight: 500;
+    font-size: 1.6rem;
+    transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: var(--gray-color);
+}
+
+/* Footer */
+footer {
+    background-color: var(--black-color);
+    padding: 3rem 0;
+    margin-top: 5rem;
+    border-radius: 1rem;
+}
+
+footer ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    padding: 0;
+    margin: 0;
+}
+
+footer ul li a img {
+    width: 6rem;
+    height: 6rem;
+    transition: transform 0.3s ease;
+}
+
+footer ul li a:hover img {
+    transform: scale(1.1);
+}
+

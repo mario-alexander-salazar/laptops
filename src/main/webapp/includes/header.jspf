@@ -1,0 +1,67 @@
+<%@ page import="io.github.salazar.ecommerce.model.User" %>
+<%
+    User user = (User) session.getAttribute("loggedUser");
+%>
+
+<header class="bg-gray-900 text-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
+
+        <!-- Logo + Marca -->
+        <div class="flex items-center gap-3">
+            <a href="<%= request.getContextPath() %>/index.jsp" class="flex items-center gap-2 text-white font-bold text-lg hover:text-blue-400 transition">
+                <img src="<%= request.getContextPath() %>/assets/images/logo.png" alt="Logo" class="h-10 w-auto">
+                <span>Service Computer</span>
+            </a>
+        </div>
+
+        <!-- Navegación -->
+        <nav class="flex gap-6 text-sm md:text-base items-center">
+            <a href="<%= request.getContextPath() %>/index.jsp" class="hover:text-blue-400 transition">Inicio</a>
+            <a href="<%= request.getContextPath() %>/products" class="hover:text-blue-400 transition">Productos</a>
+            <a href="<%= request.getContextPath() %>/pages/cart.jsp" class="hover:text-blue-400 transition">Carrito</a>
+
+            <%
+                if (user != null) {
+                    int profileId = user.getIdProfile();
+
+                    if (profileId == 1) {
+            %>
+            <!-- ADMIN -->
+            <a href="<%= request.getContextPath() %>/user" class="hover:text-blue-400 transition">Usuarios</a>
+            <a href="<%= request.getContextPath() %>/product" class="hover:text-blue-400 transition">Productos (Admin)</a>
+            <%
+            } else if (profileId == 3) {
+            %>
+            <!-- EMPLEADO -->
+            <a href="<%= request.getContextPath() %>/product" class="hover:text-blue-400 transition">Editar Productos</a>
+            <%
+                    }
+                }
+            %>
+        </nav>
+
+        <!-- Usuario -->
+        <div class="flex items-center gap-4">
+            <%
+                if (user != null) {
+            %>
+            <span class="text-sm md:text-base">Hola, <strong><%= user.getName() %></strong></span>
+            <a href="<%= request.getContextPath() %>/logout"
+               class="bg-transparent border border-white text-white px-4 py-1 rounded hover:bg-white hover:text-gray-900 transition text-sm">
+                Cerrar sesión
+            </a>
+            <%
+            } else {
+            %>
+            <a href="<%= request.getContextPath() %>/pages/login.jsp" class="text-sm hover:text-blue-400 transition">Iniciar sesión</a>
+            <a href="<%= request.getContextPath() %>/pages/register.jsp"
+               class="bg-blue-600 text-white px-4 py-1 rounded hover:bg-blue-700 transition text-sm">
+                Registrarse
+            </a>
+            <%
+                }
+            %>
+        </div>
+
+    </div>
+</header>
