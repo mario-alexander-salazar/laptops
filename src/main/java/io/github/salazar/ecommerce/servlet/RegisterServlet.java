@@ -21,7 +21,7 @@ public class RegisterServlet extends HttpServlet {
         String dni = req.getParameter("dni");
         String email = req.getParameter("email");
         String password = req.getParameter("password");
-        int maritalStatusId = Integer.parseInt(req.getParameter("maritalStatusId"));
+        String maritalStatusId = req.getParameter("maritalStatus");
         int profileId = Integer.parseInt(req.getParameter("profileId"));
 
         // Check if user already exists
@@ -39,7 +39,7 @@ public class RegisterServlet extends HttpServlet {
         user.setDni(dni);
         user.setEmail(email);
         user.setPassword(password);
-        user.setIdMaritalStatus(maritalStatusId);
+        user.setMaritalStatus(maritalStatusId);
         user.setIdProfile(profileId);
 
         userService.save(user);

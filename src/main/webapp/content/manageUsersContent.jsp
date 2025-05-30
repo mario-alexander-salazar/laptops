@@ -80,7 +80,7 @@
             <td class="px-4 py-2 border">${u.name}</td>
             <td class="px-4 py-2 border">${u.email}</td>
             <td class="px-4 py-2 border">${u.dni}</td>
-            <td class="px-4 py-2 border">${u.idProfile}</td>
+            <td class="px-4 py-2 border">${u.profile}</td>
             <td class="px-4 py-2 border text-center space-x-2">
               <!-- Eliminar -->
               <form action="${pageContext.request.contextPath}/user" method="post" class="inline-block">

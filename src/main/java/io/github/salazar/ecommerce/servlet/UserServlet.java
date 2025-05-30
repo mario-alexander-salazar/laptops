@@ -1,15 +1,15 @@
 package io.github.salazar.ecommerce.servlet;
 
 import io.github.salazar.ecommerce.factory.ServiceFactory;
-import io.github.salazar.ecommerce.model.User;
+import io.github.salazar.ecommerce.model.*;
 import io.github.salazar.ecommerce.service.Service;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.*;
 import jakarta.servlet.http.*;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.*;
 
 @WebServlet("/user")
 public class UserServlet extends HttpServlet {
@@ -27,7 +27,23 @@ public class UserServlet extends HttpServlet {
         }
 
         List<User> users = userService.findAll();
-        req.setAttribute("users", users);
+        List<Profile> profiles = ServiceFactory.getProfileService().findAll();
+        Map<Integer, Profile> profileMap = profiles.stream()
+                .collect(Collectors.toMap(Profile::getId, p -> p));
+        List<UserProfile> userProfiles = users.stream()
+                .map(u -> {
+                    Profile profile = profileMap.get(u.getIdProfile());
+                    return new UserProfile(
+                            u.getId(),
+                            profile != null ? profile.getDescription() : "Sin perfil",
+                            u.getName(),
+                            u.getMaritalStatus(),
+                            u.getDni(),
+                            u.getEmail()
+                    );
+                })
+                .collect(Collectors.toList());
+        req.setAttribute("users", userProfiles);
         req.getRequestDispatcher("pages/manageUsers.jsp").forward(req, resp);
     }
 
@@ -41,7 +57,7 @@ public class UserServlet extends HttpServlet {
             user.setDni(req.getParameter("dni"));
             user.setEmail(req.getParameter("email"));
             user.setPassword(req.getParameter("password"));
-            user.setIdMaritalStatus(Integer.parseInt(req.getParameter("maritalStatusId")));
+            user.setMaritalStatus(req.getParameter("maritalStatus"));
             user.setIdProfile(Integer.parseInt(req.getParameter("profileId")));
             userService.save(user);
 

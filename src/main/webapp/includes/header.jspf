@@ -28,7 +28,7 @@
             %>
             <!-- ADMIN -->
             <a href="<%= request.getContextPath() %>/user" class="hover:text-blue-400 transition">Usuarios</a>
-            <a href="<%= request.getContextPath() %>/product" class="hover:text-blue-400 transition">Productos (Admin)</a>
+            <a href="<%= request.getContextPath() %>/logs" class="hover:text-blue-400 transition">Logs</a>
             <%
             } else if (profileId == 3) {
             %>

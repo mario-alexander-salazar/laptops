@@ -9,6 +9,7 @@ import jakarta.servlet.http.*;
 
 import java.io.*;
 import java.util.*;
+import java.util.stream.*;
 
 @WebServlet("/product")
 public class ManageProductsServlet extends HttpServlet {
@@ -26,7 +27,25 @@ public class ManageProductsServlet extends HttpServlet {
         }
 
         List<Product> products = productService.findAll();
-        req.setAttribute("products", products);
+        List<Category> categories = ServiceFactory.getCategoryService().findAll();
+
+        Map<Integer, Category> categoryMap = categories.stream()
+                .collect(Collectors.toMap(Category::getId, c -> c));
+
+        List<ProductCategory> productCategories = products.stream()
+                .map(p -> {
+                    Category category = categoryMap.get(p.getIdCategory());
+                    return new ProductCategory(
+                            p.getId(),                      // id del producto
+                            category != null ? category.getDescription() : "Sin categoría", // idCategory o nombre
+                            p.getName(),
+                            p.getQuantity(),
+                            p.getPrice()
+                    );
+                })
+                .collect(Collectors.toList());
+
+        req.setAttribute("products", productCategories);
         req.setAttribute("productToEdit", product.orElse(null));
         req.getRequestDispatcher("pages/manageProducts.jsp").forward(req, resp);
     }
@@ -46,7 +65,7 @@ public class ManageProductsServlet extends HttpServlet {
         } else if ("delete".equals(action)) {
             int id = Integer.parseInt(req.getParameter("id"));
             productService.delete(id);
-        }else if ("update".equals(action)) {
+        } else if ("update".equals(action)) {
             int id = Integer.parseInt(req.getParameter("id"));
             Optional<Product> existing = productService.findById(id);
             if (existing.isPresent()) {

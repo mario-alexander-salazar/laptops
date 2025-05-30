@@ -10,7 +10,7 @@ public class User {
 
     private int id;
     private int idProfile;
-    private int idMaritalStatus;
+    private String maritalStatus;
     private String dni;
     private String name;
     private String email;

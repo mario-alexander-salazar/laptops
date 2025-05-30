@@ -15,13 +15,13 @@
 
         <form action="<%= request.getContextPath() %>/checkout" method="post" onsubmit="return validatePaymentForm();">
             <div class="mb-4">
-                <label for="cardNumber" class="block text-sm font-medium text-gray-700 mb-1">Número de tarjeta</label>
+                <label for="cardNumber" class="block text-sm font-medium text-gray-700 mb-1">Numero de tarjeta</label>
                 <input type="text" id="cardNumber" name="cardNumber" maxlength="16" required
                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
             </div>
 
             <div class="mb-4">
-                <label for="expiry" class="block text-sm font-medium text-gray-700 mb-1">Fecha de expiración (MM/YY)</label>
+                <label for="expiry" class="block text-sm font-medium text-gray-700 mb-1">Fecha de expiracion (MM/YY)</label>
                 <input type="text" id="expiry" name="expiry" required
                        class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" />
             </div>
@@ -47,7 +47,7 @@
         const cvv = document.getElementById("cvv").value;
 
         if (!/^\d{16}$/.test(cardNumber)) {
-            alert("El número de tarjeta debe tener 16 dígitos.");
+            alert("El numero de tarjeta debe tener 16 digitos.");
             return false;
         }
 
@@ -57,7 +57,7 @@
         }
 
         if (!/^\d{3}$/.test(cvv)) {
-            alert("El CVV debe tener 3 dígitos.");
+            alert("El CVV debe tener 3 digitos.");
             return false;
         }
 

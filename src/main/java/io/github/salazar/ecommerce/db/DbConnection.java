@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class DbConnection {
 
     private static final String DRIVER = "org.postgresql.Driver";
-    private static final String URL = "jdbc:postgresql://localhost:5432/ecommerce";
+    private static final String URL = "jdbc:postgresql://localhost:5432/bd_laptops";
     private static final String USER = "postgres";
     private static final String PASSWORD = "1234";
 

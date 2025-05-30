@@ -22,10 +22,10 @@
 
     <form method="get" action="${pageContext.request.contextPath}/products"
           class="flex flex-col sm:flex-row gap-4 items-center justify-center mb-8">
-      <label for="categoryId" class="text-sm font-medium text-gray-700">Filtrar por categoría:</label>
+      <label for="categoryId" class="text-sm font-medium text-gray-700">Filtrar por categoria:</label>
       <select name="categoryId" id="categoryId"
               class="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
-        <option value="">Todas las categorías</option>
+        <option value="">Todas las categorias</option>
         <c:forEach var="c" items="${categories}">
           <option value="${c.id}" ${param.categoryId == c.id ? "selected" : ""}>${c.description}</option>
         </c:forEach>
@@ -40,7 +40,7 @@
     <c:choose>
       <c:when test="${empty products}">
         <p class="text-center text-gray-600 text-lg mt-8">
-          No hay productos disponibles en esta categoría.
+          No hay productos disponibles en esta categoria.
         </p>
       </c:when>
       <c:otherwise>

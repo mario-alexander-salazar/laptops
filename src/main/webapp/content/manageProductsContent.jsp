@@ -75,7 +75,7 @@
           <tr class="hover:bg-gray-50">
             <td class="px-4 py-2 border">${p.id}</td>
             <td class="px-4 py-2 border">${p.name}</td>
-            <td class="px-4 py-2 border">${p.idCategory}</td>
+            <td class="px-4 py-2 border">${p.category}</td>
             <td class="px-4 py-2 border">${p.quantity}</td>
             <td class="px-4 py-2 border">$${p.price}</td>
             <td class="px-4 py-2 border text-center space-x-2">

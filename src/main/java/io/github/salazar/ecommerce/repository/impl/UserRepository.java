@@ -55,7 +55,7 @@ public class UserRepository implements Repository<Integer, User> {
              PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
             stmt.setInt(1, user.getIdProfile());
-            stmt.setInt(2, user.getIdMaritalStatus());
+            stmt.setString(2, user.getMaritalStatus());
             stmt.setString(3, user.getName());
             stmt.setString(4, user.getDni());
             stmt.setString(5, user.getEmail());
@@ -83,7 +83,7 @@ public class UserRepository implements Repository<Integer, User> {
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, user.getIdProfile());
-            stmt.setInt(2, user.getIdMaritalStatus());
+            stmt.setString(2, user.getMaritalStatus());
             stmt.setString(3, user.getName());
             stmt.setString(4, user.getDni());
             stmt.setString(5, user.getEmail());
@@ -118,7 +118,7 @@ public class UserRepository implements Repository<Integer, User> {
         User user = new User();
         user.setId(rs.getInt("id"));
         user.setIdProfile(rs.getInt("id_profile"));
-        user.setIdMaritalStatus(rs.getInt("id_marital_status"));
+        user.setMaritalStatus(rs.getString("marital_status"));
         user.setName(rs.getString("name"));
         user.setDni(rs.getString("dni"));
         user.setEmail(rs.getString("email"));

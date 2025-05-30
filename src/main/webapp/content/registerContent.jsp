@@ -12,25 +12,25 @@
             </div>
 
             <div class="mb-4">
-                <label class="block text-sm font-medium text-gray-700">Cédula (DNI)</label>
+                <label class="block text-sm font-medium text-gray-700">Cedula (DNI)</label>
                 <input type="text" name="dni" required pattern="\\d{10}" title="10-digit number"
                        class="w-full border border-gray-300 rounded-md px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500" />
             </div>
 
             <div class="mb-4">
-                <label class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
+                <label class="block text-sm font-medium text-gray-700">Correo Electronico</label>
                 <input type="email" name="email" required
                        class="w-full border border-gray-300 rounded-md px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500" />
             </div>
 
             <div class="mb-4">
-                <label class="block text-sm font-medium text-gray-700">Contraseña</label>
+                <label class="block text-sm font-medium text-gray-700">Contrasena</label>
                 <input type="password" name="password" id="password" required
                        class="w-full border border-gray-300 rounded-md px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500" />
             </div>
 
             <div class="mb-4">
-                <label class="block text-sm font-medium text-gray-700">Confirmar Contraseña</label>
+                <label class="block text-sm font-medium text-gray-700">Confirmar Contrasena</label>
                 <input type="password" id="confirm" required
                        class="w-full border border-gray-300 rounded-md px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500" />
             </div>
@@ -72,7 +72,7 @@
         const password = document.getElementById("password").value;
         const confirm = document.getElementById("confirm").value;
         if (password !== confirm) {
-            alert("¡Las contraseñas no coinciden!");
+            alert("¡Las contrasenas no coinciden!");
             return false;
         }
         return true;
